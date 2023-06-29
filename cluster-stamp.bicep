@@ -394,7 +394,7 @@ resource agw 'Microsoft.Network/applicationGateways@2022-01-01' = {
       }
     }
   }
-  zones: pickZones('Microsoft.Network', 'applicationGateways', location, 3)
+  zones: ['1','3'] 
   properties: {
     sku: {
       name: 'WAF_v2'
@@ -602,11 +602,11 @@ resource agw_diagnosticSettings 'Microsoft.Insights/diagnosticSettings@2021-05-0
 resource vmssJumpboxes 'Microsoft.Compute/virtualMachineScaleSets@2020-12-01' = {
   name: 'vmss-jumpboxes'
   location: location
-  zones: pickZones('Microsoft.Compute', 'virtualMachineScaleSets', location, 3)
+  zones: ['1','3']
   sku: {
-    name: 'Standard_DS1_v2'
+    name: 'Standard_D4s_v3'
     tier: 'Standard'
-    capacity: 2
+    capacity: 1
   }
   properties: {
     additionalCapabilities: {
@@ -1045,7 +1045,7 @@ resource mc 'Microsoft.ContainerService/managedClusters@2022-10-02-preview' = {
         orchestratorVersion: kubernetesVersion
         enableNodePublicIP: false
         maxPods: 30
-        availabilityZones: pickZones('Microsoft.Compute', 'virtualMachineScaleSets', location, 3)
+        availabilityZones: ['1','3']
         upgradeSettings: {
           maxSurge: '33%'
         }
@@ -1079,7 +1079,7 @@ resource mc 'Microsoft.ContainerService/managedClusters@2022-10-02-preview' = {
         orchestratorVersion: kubernetesVersion
         enableNodePublicIP: false
         maxPods: 30
-        availabilityZones: pickZones('Microsoft.Compute', 'virtualMachineScaleSets', location, 3)
+        availabilityZones: ['1','3']
         upgradeSettings: {
           maxSurge: '33%'
         }
@@ -1111,7 +1111,7 @@ resource mc 'Microsoft.ContainerService/managedClusters@2022-10-02-preview' = {
         orchestratorVersion: kubernetesVersion
         enableNodePublicIP: false
         maxPods: 30
-        availabilityZones: pickZones('Microsoft.Compute', 'virtualMachineScaleSets', location, 3)
+        availabilityZones: ['1','3']
         upgradeSettings: {
           maxSurge: '33%'
         }
